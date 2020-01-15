@@ -5,7 +5,9 @@ import Button from './button';
 
 describe('<Button />', () => {
     it('Should call props.onClick when the button is clicked', () => {
-        const wrapper = shallow(<Button />);
+        const mockCallBack = jest.fn();
+        const wrapper = shallow(<Button onClick={mockCallBack} />);
         wrapper.find('button').simulate('click');
+        expect(mockCallBack.mock.calls.length).toEqual(1);
     });
 });
